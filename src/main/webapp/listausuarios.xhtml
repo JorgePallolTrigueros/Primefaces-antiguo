@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="plantilla/general.xhtml">
+        <!--template="./plantillas/plantilla.xhtml">-->
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <ui:define name="titulo">
+           
+        </ui:define>
+
+        <ui:define name="cabecera">
+    
+        
+        </ui:define>
+
+        <ui:define name="contenido">
+        <table class="table" border = "1">
+            <tr>
+                <ui:repeat value="#{usuarioBean.muestraUsuario()}" var="entry" varStatus="status">
+                    <td>
+                        <br/><br/>
+                        
+                    
+                        
+                        <h:outputText value="#{entry.codigo}" />
+              
+                        <h:form>
+                            
+                            <h:commandButton id ="btnUsuarios" value = "Ver detalle de Usuario" action="#{usuarioBean.muestraNovelasDetalleUsuario(entry.usuarioId)}">
+                                <f:ajax execute = "btnUsuarios" />
+                            </h:commandButton>
+
+
+                        </h:form>
+                        <br/>
+                    </td>
+
+                    <!--   Esto truquea a JSF para hacer la condicion de cerrar la fila de la  </tr><tr>-->
+                    <h:outputText value="&lt;/tr&gt;&lt;tr&gt;" escape="false" rendered="#{(status.index + 1 ) mod 3 eq 0}"/>
+                </ui:repeat>
+            </tr>
+        </table>
+
+
+
+        <h:outputLink value = "Nuevanovela.xhtml" >Vueva Novela   </h:outputLink>
+     
+        
+
+
+
+  </ui:define>
+
+
+    </ui:composition>
+</html>

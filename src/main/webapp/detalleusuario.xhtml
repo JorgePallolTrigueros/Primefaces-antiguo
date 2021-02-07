@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="plantilla/general.xhtml">
+
+
+        <ui:define name="contenido">
+
+
+
+            Datos del usuario:
+            <br/>
+            <b>Nombre: </b> #{usuarioBean.persona.nombre} <br/>
+            <b>Apellido: </b> #{usuarioBean.persona.apellido}<br/>
+            <b>Fecha de Nacimiento: </b> #{usuarioBean.persona.fechaNacimiento}<br/>
+
+            <br/>
+            <br/>
+
+            En el caso de que el usuario entre en su propio perfil
+
+            Ver a su lista de novelas y al lado la posibilidad de Borrar o Editarlas<br/>
+            <br/>
+            <br/>
+            Lista de Novelas  
+            <br/>
+            <br/>
+            <h:form id="frm" prependId="false">
+                <ui:repeat value="#{usuarioBean.lstNovela}" var="entry" varStatus="status">
+                    <h:outputText value="#{entry.nombre}" />
+
+                    <h:outputLink rendered="#{usuarioBean.usuarioidId == usuarioBean.usuario.usuarioId}"
+                                  value = "novelaeditable.xhtml?novelaId=#{entry.novelaId}" >
+                        Editar interior de la Novela     
+                        &nbsp; &nbsp; |    &nbsp; &nbsp; 
+                    </h:outputLink>
+
+
+
+                    <br/>
+
+                    <h:outputLink rendered="#{usuarioBean.usuarioidId == usuarioBean.usuario.usuarioId}"
+                                  value = "Nuevanovela.xhtml?novelaId=#{entry.novelaId}" >
+                        Editar Novela     &nbsp; &nbsp; |    &nbsp; &nbsp;  </h:outputLink>
+
+
+                    <br/>               
+
+
+
+
+
+
+                    <h:commandButton class="edicion"  
+                                     rendered="#{usuarioBean.usuarioidId == usuarioBean.usuario.usuarioId}"
+                                     action="#{usuarioBean.eliminaAutorDeNovela(entry.novelaId)}" 
+                                     value="Borrar Novela la relacion con este autor" immediate="true">
+                        <f:ajax event="action" execute="@form"  render="frm" />
+                    </h:commandButton> 
+
+
+                    <h:commandButton class="edicion"  
+                                     rendered="#{usuarioBean.usuarioidId == usuarioBean.usuario.usuarioId}"
+                                     action="#{novelaBean.eliminaNovela(entry.novelaId)}" 
+                                     value="Borrar Novela de forma integra" immediate="true">
+                        <f:ajax event="action" execute="@form" render="@form" />
+                    </h:commandButton> 
+
+
+
+
+
+                    <br/>         
+
+                </ui:repeat>
+            </h:form>
+
+
+
+
+            <br/>
+            <h:outputLink rendered="#{usuarioBean.usuarioidId == usuarioBean.usuario.usuarioId}" value = "Nuevanovela.xhtml" >Nuueva Novela   </h:outputLink>
+            <br/>
+
+        </ui:define>
+
+    </ui:composition>
+</html>

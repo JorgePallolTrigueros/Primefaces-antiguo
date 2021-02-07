@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="plantilla/general.xhtml">
+        <!--template="./plantillas/plantilla.xhtml">-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ui:define name="titulo">
+            Enviar Correo
+        </ui:define>
+
+        <ui:define name="cabecera">
+            <br/>
+            <h1 style="text-align: center;">Enviar Correo</h1>
+        </ui:define>
+
+        <ui:define name="contenido">
+
+  
+	<h:form prependId="false">
+		<h:dataTable var="product" value="#{productManagedBean.products}"
+			border="1" cellpadding="2" cellspacing="2">
+
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				#{product.name}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Description</f:facet>
+				#{product.description}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Price</f:facet>
+				#{product.price}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Status</f:facet>
+				#{product.status}
+			</h:column>
+			<h:column rendered="#{usuarioBean.usuarioRegistrado == true}">
+				<f:facet name="header">Option</f:facet>
+				<h:commandLink  rendered="#{usuarioBean.usuarioRegistrado == true}" value="Buy Now" action="#{cartManagedBean.buy(product)}"></h:commandLink>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+
+
+
+ </ui:define>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ui:composition>
+</html>

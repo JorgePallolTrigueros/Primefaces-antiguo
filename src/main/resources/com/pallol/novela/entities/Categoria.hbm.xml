@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-jul-2019 9:04:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pallol.novela.entities.Categoria" table="categoria" catalog="noveladb" optimistic-lock="version">
+        <id name="categoriaId" type="java.lang.Integer">
+            <column name="categoria_id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="65535" not-null="true" />
+        </property>
+        <set name="novelas" table="novela" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="categoria_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.Novela" />
+        </set>
+    </class>
+</hibernate-mapping>

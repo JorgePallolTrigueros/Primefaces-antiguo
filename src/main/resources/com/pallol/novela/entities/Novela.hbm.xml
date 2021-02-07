@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-jul-2019 9:04:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pallol.novela.entities.Novela" table="novela" catalog="noveladb" optimistic-lock="version">
+        <id name="novelaId" type="java.lang.Integer">
+            <column name="novela_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categoria" class="com.pallol.novela.entities.Categoria" fetch="select">
+            <column name="categoria_id_fk" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="75" />
+        </property>
+        <property name="descripciong" type="string">
+            <column name="descripciong" length="65535" not-null="true" />
+        </property>
+        <property name="precio" type="int">
+            <column name="precio" not-null="true" />
+        </property>
+        <property name="notas" type="string">
+            <column name="notas" not-null="true" />
+        </property>
+        <property name="anotacion" type="string">
+            <column name="anotacion" length="65535" not-null="true" />
+        </property>
+        <property name="imagen" type="string">
+            <column name="imagen" length="65535" not-null="true" />
+        </property>
+        <property name="descripcionp" type="string">
+            <column name="descripcionp" length="65535" not-null="true" />
+        </property>
+        <property name="votos" type="java.lang.Integer">
+            <column name="votos" />
+        </property>
+        <set name="personajes" table="personaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="novela_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.Personaje" />
+        </set>
+        <set name="galerias" table="galeria" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="novela_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.Galeria" />
+        </set>
+        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="novela_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.Comentario" />
+        </set>
+        <set name="capitulos" table="capitulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="novela_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.Capitulo" />
+        </set>
+        <set name="usuarioNovelas" table="usuario_novela" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="novela_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.UsuarioNovela" />
+        </set>
+    </class>
+</hibernate-mapping>

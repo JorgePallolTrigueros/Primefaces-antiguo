@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>     
+           <link rel="stylesheet" href="bootstrap.min.css">
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+
+
+        </style>
+
+
+        
+        
+        
+
+    </h:head>
+    <h:body>
+        <f:metadata>
+            <f:viewParam name="novelaId" value="#{novelaBean.novelaId}"/>
+            <ui:param name="novelaId" value="#{param['novelaId']}" />
+            <f:event type="preRenderView" listener="#{novelaBean.obtieneNovela(novelaId)}" />
+        </f:metadata>
+        
+        
+        
+        
+        <nav>
+            <div class="nav-wrapper">
+                <img src="logo.png"/>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                   <li><h:outputLink value = "primeface_cuadricula.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == true}">Primefaces</h:outputLink></li>
+                    <li><h:outputLink value = "correo.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Enviar Coorreo   </h:outputLink></li>
+                    <li><h:outputLink value = "fija1.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Quienes Somos</h:outputLink></li>
+                    <li> <h:outputLink value = "fija2.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Bienvenidos </h:outputLink></li>
+                    <li><h:outputLink value = "listausuarios.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuestros Usuarios </h:outputLink></li>
+                    <li><h:outputLink value = "login.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Login </h:outputLink></li>
+                    <li><h:outputLink value = "registro.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Registrop de Usuario </h:outputLink></li>
+                    <!--    Parte No  Protegida      -->
+                    <li><h:outputLink value = "correo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Enviar Coorreo   </h:outputLink></li>
+                    <li><h:outputLink value = "fija1.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Quienes Somos </h:outputLink></li>
+                    <li> <h:outputLink value = "fija2.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Parte fija 2 </h:outputLink></li>
+                    <li><h:outputLink value = "registro.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Registrop de Usuario </h:outputLink></li>                  
+                    <li><h:outputLink value = "ejemplo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Jsf Puro</h:outputLink></li>                   
+                    <li><h:outputLink value = "materialice_cuadricula.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Materialice</h:outputLink></li>
+                    <li><h:outputLink value = "login.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Login </h:outputLink></li>
+                       <!--    Parte Nueva Sin Proteger     -->        
+                    <li><h:outputLink value = "listausuarios.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuestros Autores </h:outputLink></li>
+                    <li><h:outputLink value = "productos.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuestros Productos </h:outputLink></li>
+                    <li><h:outputLink value = "rankins.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuetro Rankimg </h:outputLink></li>        
+                        <!--    Parte Nueva y Protegda     -->                       
+                    <li><h:outputLink value = "listausuarios.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Logaut </h:outputLink></li>
+                    <li><h:outputLink value = "carrito.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuestros Productos </h:outputLink></li>
+                    <li><h:outputLink value = "rankinsp.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuetro Rankimg </h:outputLink></li>    
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="separcion">
+
+            <div class="separcion">
+                e
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col s2 l2 m2"></div>
+            <div class="col s6 l6 m6">
+                <h:form enctype="multipart/form-data">
+                    <p:messages id="mensaje"  autoUpdate="false"/>
+
+                    <p:fieldset legend="Nueva Novela" id="pqcuenta"> 
+                        <h:panelGrid id="panel" columns="2"> 
+
+                            <p:outputLabel  for="txtanotacion" value="Tu Anotacion personal" />
+                            <p:inputText id="txtanotacion" value="#{novelaBean.novela.anotacion}" required="true" requiredMessage="Campo requerido" />   
+
+                            <p:outputLabel  for="txtnombre" value="Nombre de la Novela" />
+                            <p:inputText id="txtnombre" value="#{novelaBean.novela.nombre}" required="true" requiredMessage="Campo requerido" />   
+
+                            <p:outputLabel  for="txtnotas" value="Notas" />
+                            <p:inputText id="txtnotas"  required="true" value="#{novelaBean.novela.notas}" requiredMessage="Campo requerido" />   
+
+                            <p:outputLabel  for="txtdescripciong" value="Tu descripcion Grande" />
+                            <p:inputTextarea  id="txtdescripciong" value="#{novelaBean.novela.descripciong}" rows="10" cols="50" queryDelay="750" minQueryLength="4" />
+
+                            <p:outputLabel  for="txtdescripcionp" value="Tu descripcion Pequeña" />
+                            <p:inputTextarea  id="txtdescripcionp" value="#{novelaBean.novela.descripcionp}" rows="10" cols="50" queryDelay="750" minQueryLength="4" />
+
+                            <p:outputLabel  for="txtprecio" value="Precio" />
+                            <p:inputText id="txtprecio" value="#{novelaBean.novela.precio}"/>
+
+                            <p:outputLabel  for="menucategoria" value="Categoria" />
+                            <p:selectOneMenu id="menucategoria" value="#{novelaBean.novela.categoria.categoriaId}"  >
+                                <f:selectItem itemLabel="Select One" itemValue="" />
+                                <f:selectItem itemLabel="Violenta" itemValue="88" />
+                                <!--<f:selectItems value="{novelaBean.novela.categoria.nombre}" />-->
+                            </p:selectOneMenu>
+
+                            <p:fileUpload value="#{novelaBean.file}" mode="simple" skinSimple="true"/>
+
+                            <p:inputText value="idnovela" id="hiddenfield1" type="hidden" />
+                            <p:inputText value="idautor" id="hiddenfield2" type="hidden" />
+
+                            
+                            
+                            <h:panelGrid columns="2"> 
+                                <p:commandButton icon="ui-icon-check" value="Borrar" update="panel" process="@this" >
+                                    <p:resetInput target="panel" />
+                                </p:commandButton>
+                                <p:commandButton icon="ui-icon-check" value="Registrar"  update=""  ajax="false" action="#{novelaBean.insertaNovela}" >
+                                </p:commandButton>
+                            </h:panelGrid>
+
+                            
+                            
+                            
+                        </h:panelGrid>   
+                    </p:fieldset>        
+                </h:form>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('select');
+                var instances = M.FormSelect.init(elems, options);
+            });
+
+            // Or with jQuery
+
+            $(document).ready(function () {
+                $('select').formSelect();
+            });
+
+        </script>
+    </h:body>
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        
+</html>

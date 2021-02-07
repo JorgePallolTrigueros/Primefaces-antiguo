@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-jul-2019 9:04:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pallol.novela.entities.Rol" table="rol" catalog="noveladb" optimistic-lock="version">
+        <id name="rolId" type="int">
+            <column name="rol_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" />
+        </property>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rol_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.Usuario" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+    <head>     
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     
+
+        <!-- Compiled and minified CSS -->
+        <!-- Compiled and minified JavaScript -->
+
+
+
+    </head>
+    <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+
+      <li class="nav-item">
+
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "primeface_cuadricula.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == true}">Primefaces</h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "primeface_cuadricula.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Primefaces</h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "correo.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Enviar Coorreo   </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "fija1.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Quienes Somos</h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "fija2.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Bienvenidos </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "listausuarios.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuestros Usuarios </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "login.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == false}">Login </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "registro.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == false}">Registrop de Usuario </h:outputLink></li>
+                    <!--    Parte No  Protegida      -->
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "correo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Enviar Coorreo   </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "fija1.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Quienes Somos </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "fija2.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Parte fija 2 </h:outputLink></li>
+                             
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "ejemplo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Jsf Puro</h:outputLink>            </li>       
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "materialice_cuadricula.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Materialice</h:outputLink></li>
+             
+                    <!--    Parte Nueva Sin Proteger     -->        
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "listausuarios.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuestros Autores </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "productos.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuestros Productos </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "rankins.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuetro Rankimg </h:outputLink>       </li> 
+                        <!--    Parte Nueva y Protegda     -->                       
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "listausuarios.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Logaut </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "carrito.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuestros Productos </h:outputLink></li>
+                    <li class="nav-item"><h:outputLink class="nav-link" value = "rankinsp.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuetro Rankimg </h:outputLink> </li>
+
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+        <div class="separcion">
+
+            <div class="separcion">
+                e
+            </div>
+        </div>
+        <h:form prependId="false" id="#{novelaBean.tablaNovelaId}">
+            <table class="table" border = "1">
+                <tr>
+                    <ui:repeat value="#{novelaBean.muestraNovelaPaginada()}" var="entry" varStatus="status">
+                        <td>
+                            <br/>
+                            <center>
+                                <h:graphicImage   height="50%" width="50%" value="#{entry.imagen}"/> 
+                            </center>
+                            <br/><br/>
+                            <span class="nombrelista"><h:outputText value="#{entry.novelaId}" />
+                                <br/>
+                                <h:outputText value="#{entry.nombre}" /></span>
+                            <br/> <br/> 
+                            <span class="descripcionlista"><h:outputText value="#{entry.descripcionp}" />
+                            </span>
+                            <br/>
+                            <br/>               
+
+
+
+
+                            <h:commandButton id ="btneditar" value = "Ver Editar elementos" action="#{novelaBean.cargaPaginaEdicionNovela(entry.novelaId)}"/>
+
+
+
+                            <h:form>
+
+                                <h:commandButton id ="btnComentarios2" value = "Ver para otros autores" action="#{novelaBean.muestraDetallesNovelaparavisitantes(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                                </h:commandButton>
+
+
+
+
+
+                            </h:form>
+
+                            <br/>
+                        </td>
+
+                        <!--  Esto truquea a JSF para hacer la condicion de cerrar la fila de la  </tr><tr>-->
+                        <h:outputText value="&lt;/tr&gt;&lt;tr&gt;" escape="false" rendered="#{(status.index + 1 ) mod 3 eq 0}"/>
+                    </ui:repeat>
+                </tr>
+            </table>
+
+            <br/><br/><br/>
+
+            <center>
+                <ui:repeat value="#{novelaBean.listaElementosPaginados.listaTotalPaginas}" var="page">
+
+                    <h:commandButton value="#{page}" action="#{novelaBean.listaElementosPaginados.setNumeroPaginaSeleccionada(page - 1)}"
+                                     rendered="#{(page - 1) != (novelaBean.listaElementosPaginados.numeroPaginaSeleccionada)}" immediate="true" >
+                        <f:ajax event="action" execute="@form" render="@form" />
+                    </h:commandButton>
+
+
+
+
+
+
+                    <h:outputText value="#{page}" escape="false"
+                                  rendered="#{(page - 1) == (novelaBean.listaElementosPaginados.numeroPaginaSeleccionada)}" />
+                    <h:outputText value="&#160;&#160;" />
+                </ui:repeat>
+            </center>
+        </h:form>
+
+
+        <h2>
+            <h:panelGroup id="comentarios">
+                <ui:repeat  value="#{novelaBean.lstComentario}" var="entry" varStatus="status">
+                    <h:outputText value = "#{entry.texto}"/>
+                </ui:repeat>
+            </h:panelGroup>
+        </h2>
+
+
+        <br />
+
+    </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</html>

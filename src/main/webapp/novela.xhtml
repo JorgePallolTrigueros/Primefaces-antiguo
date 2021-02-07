@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </h:head>
+    <h:body>
+
+        <nav>
+            <div class="nav-wrapper">
+                <img src="logo.png"/>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                   <li><h:outputLink value = "primeface_cuadricula.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == true}">Primefaces</h:outputLink></li>
+                    <li><h:outputLink value = "correo.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Enviar Coorreo   </h:outputLink></li>
+                    <li><h:outputLink value = "fija1.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Quienes Somos</h:outputLink></li>
+                    <li> <h:outputLink value = "fija2.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Bienvenidos </h:outputLink></li>
+                    <li><h:outputLink value = "listausuarios.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuestros Usuarios </h:outputLink></li>
+                    <li><h:outputLink value = "login.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Login </h:outputLink></li>
+                    <li><h:outputLink value = "registro.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Registrop de Usuario </h:outputLink></li>
+                    <!--    Parte No  Protegida      -->
+                    <li><h:outputLink value = "correo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Enviar Coorreo   </h:outputLink></li>
+                    <li><h:outputLink value = "fija1.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Quienes Somos </h:outputLink></li>
+                    <li> <h:outputLink value = "fija2.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Parte fija 2 </h:outputLink></li>
+                    <li><h:outputLink value = "registro.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Registrop de Usuario </h:outputLink></li>                  
+                    <li><h:outputLink value = "ejemplo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Jsf Puro</h:outputLink></li>                   
+                    <li><h:outputLink value = "materialice_cuadricula.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Materialice</h:outputLink></li>
+                    <li><h:outputLink value = "login.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Login </h:outputLink></li>
+                       <!--    Parte Nueva Sin Proteger     -->        
+                    <li><h:outputLink value = "listausuarios.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuestros Autores </h:outputLink></li>
+                    <li><h:outputLink value = "productos.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuestros Productos </h:outputLink></li>
+                    <li><h:outputLink value = "rankins.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Nuetro Rankimg </h:outputLink></li>        
+                        <!--    Parte Nueva y Protegda     -->                       
+                    <li><h:outputLink value = "login.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Logaut </h:outputLink></li>
+                    <li><h:outputLink value = "web-inf\carrito.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuestros Productos </h:outputLink></li>
+                    <li><h:outputLink value = "rankinsp.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuetro Rankimg </h:outputLink></li>    
+                </ul>
+            </div>
+        </nav>
+
+        <div class="separcion">
+
+            <div class="separcion">
+             e
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col s2 l2 m2"></div>
+            <div class="col s6 l6 m6">
+
+
+
+                <h:form id="form">
+                    <p:dataGrid var="novela" value="#{novelaBean.muestraNovela()}" columns="3" layout="grid" rows="12" paginator="true" id="novelas"
+                                currentPageReportTemplate="Mostrando {startRecord}-{endRecord} de {totalRecords}"
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="6,12,16">
+
+                        <f:facet name="header">
+                            Novelas
+                        </f:facet>
+
+                        <p:panel header="#{novela.novelaId}" style="text-align:center">
+                            <h:panelGrid columns="1" width="50%">
+                                <p:graphicImage  width="150px" value="#{novela.imagen}"/> 
+
+                                <h:outputText value="#{novela.nombre}" />
+                                <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(novela.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                                </h:commandButton>
+
+                                <h:commandButton id ="btneditar" value = "Ver Editar elementos" action="novelaeditable">
+                                    <f:param name="novelaId" value="#{novela.novelaId}" />
+                                </h:commandButton>
+
+                            </h:panelGrid>
+                        </p:panel>
+
+                    </p:dataGrid>
+                </h:form>
+
+        <span class="titulito"> COMENTARIOS</span>
+        <br/>
+        #{novelaBean.lstComentario}
+        
+        
+        
+            </div></div>
+    </h:body>
+</html>
+
+

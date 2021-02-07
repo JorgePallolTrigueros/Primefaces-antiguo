@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="plantilla/general.xhtml">
+        <!--template="./plantillas/plantilla.xhtml">-->
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <ui:define name="titulo">
+           
+        </ui:define>
+
+        
+        
+        
+        
+        <ui:define name="cabecera">
+    
+        
+        </ui:define>
+        
+        
+        
+        
+        
+        
+
+        <ui:define name="contenido">
+        <h:form prependId="false" id="#{productoBean.tablaProductoId}">
+            <table class="table" border = "1">
+                <tr>
+                    <ui:repeat value="#{productoBean.muestraProductoPaginado()}" var="entry" varStatus="status">
+                        <td>
+                            <br/>
+                            <center>
+                                <h:graphicImage   height="50%" width="50%" value="#{entry.url}"/> 
+                            </center>
+                            <br/><br/>
+                            <span class="nombrelista"><h:outputText value="#{entry.idproducto}" />
+                                <br/>
+                                <h:outputText value="#{entry.nombre}" /></span>
+                            <br/> <br/> 
+                            <span class="descripcionlista"><h:outputText value="#{entry.descripcionPequena}" />
+                            </span>
+                 
+
+
+
+
+
+                            <h:commandButton id ="btnAnadircarrto" value = "Anadir Carrito" actionListener="#{productoBean.anadeProductoCarrito(entry.idproducto, 10)}">
+                                <f:ajax execute = "btnanadircarrito" render = "carrito" />
+                            </h:commandButton>
+
+
+
+                            <h:commandButton id ="btnDetalle2" value = "Ver detlle carrito" action="#{productoBean.muestraDetallesNovelaparavisitantes(entry.productoId)}">
+                                <f:ajax execute = "btnDetalle" render = "detalle" />
+                            </h:commandButton>
+
+
+
+                            <br/>
+                        </td>
+
+                        <h:outputText value="&lt;/tr&gt;&lt;tr&gt;" escape="false" rendered="#{(status.index + 1 ) mod 3 eq 0}"/>
+                    </ui:repeat>
+                </tr>
+            </table>
+
+            <br/><br/><br/>
+
+            <center>
+                <ui:repeat value="#{productoBean.listaElementosPaginados.listaTotalPaginas}" var="page">
+
+                    <h:commandButton value="#{page}" action="#{productoBean.listaElementosPaginados.setNumeroPaginaSeleccionada(page - 1)}"
+                                     rendered="#{(page - 1) != (productoBean.listaElementosPaginados.numeroPaginaSeleccionada)}" immediate="true" >
+                        <f:ajax event="action" execute="@form" render="@form" />
+                    </h:commandButton>
+                    <h:outputText value="#{page}" escape="false"
+                                  rendered="#{(page - 1) == (productoBean.listaElementosPaginados.numeroPaginaSeleccionada)}" />
+                    <h:outputText value="&#160;&#160;" />
+                </ui:repeat>
+            </center>
+        </h:form>
+
+
+        <h:commandButton id ="btnDetalle2" value = "Ver detlle carrito" action="#(productoBean.muestraProductosUsuario())">
+                                <f:ajax execute = "btnDetalle" render = "detalle" />
+                            </h:commandButton>
+
+
+
+  </ui:define>
+
+</ui:composition></html>

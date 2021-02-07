@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="plantilla/general.xhtml">
+        <!--template="./plantillas/plantilla.xhtml">-->
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <ui:define name="titulo">
+           
+        </ui:define>
+
+        <ui:define name="cabecera">
+    
+        
+        </ui:define>
+
+        <ui:define name="contenido">
+                 <h:form>
+                    
+                    <p:messages id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true"  showDetail="true"/>
+         
+     
+                  
+                    
+  <p:fieldset legend="Datos Cuenta">   
+      
+                <h:panelGrid columns="3" id="pqDatos">
+                    
+                            <p:outputLabel for="rdtipo" value="Tipo"  />
+                            <p:selectOneRadio id="rdtipo" value="#{usuarioController.usuario.tipo}" required="true" requiredMessage="Campo requerido"   >   
+                                    <f:selectItem itemValue="A" itemLabel="Administrador"/>
+                                    <f:selectItem itemValue="O" itemLabel="Operario"/>               
+                                </p:selectOneRadio> 
+                          <p:message  for="rdtipo" />                  
+                    
+                    
+                    
+                    
+                        <p:outputLabel for="txtNombres" value="Nombres" />
+                        <p:inputText id="txtNombres" value="#{usuarioController.persona.nombres}" required="true" requiredMessage="Campo requerido" />   
+                        <p:message  for="txtNombres"/>
+
+                          <p:outputLabel for="txtApellidos"  value="Apellidos"  />
+                          <p:inputText id="txtApellidos" value="#{usuarioController.persona.apellidos}" required="true" requiredMessage="Campo requerido"   />                
+                         <p:message  for="txtApellidos" />
+
+                          <p:outputLabel for="rdsexo" value="Sexo"  />
+                                <p:selectOneRadio id="rdsexo" value="#{usuarioController.persona.sexo}" required="true" requiredMessage="Campo requerido"   >   
+                                    <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                                    <f:selectItem itemValue="F" itemLabel="Femenino"/>               
+                                </p:selectOneRadio> 
+                          <p:message  for="rdsexo" />
+
+                          <p:outputLabel  for="txtfecha" value="Fec. Nacimiento" />
+                          <p:calendar   locale="es" id="txtfecha" value="#{usuarioController.persona.fechaNacimiento}" required="true" requiredMessage="Campo requerido" />   
+                          <p:message  for="txtfecha" />
+                          
+                  </h:panelGrid>        
+</p:fieldset>
+                    
+         
+                    
+                    
+                    
+                    
+                    
+                    
+                    <p:fieldset legend="Datos Personales" id="pqcuenta"> 
+                          <h:panelGrid columns="2"> 
+                              
+<p:outputLabel  for="txtusuario" value="Usuario" />
+<p:inputText id="txtusuario" value="#{usuarioController.usuario.usuario}"  required="true" requiredMessage="Campo requerido" />   
+
+<p:outputLabel for="clave1" value="Clave"/>
+<p:password value="#{usuarioController.usuario.clave}" 
+            match="clave2" id="clave1"  
+            weakLabel="Debil" goodLabel="Buena" strongLabel="Fuerte"
+            validatorMessage="Las claves no coinciden"
+            feedback="true" promptLabel="Ingrese la contraseña" requiredMessage="Campo requerido" />   
+
+<p:outputLabel for="clave2" value="Repetir clace"  />   
+<p:password id="clave2" requiredMessage="Campo requerido" />
+</h:panelGrid>     
+                        <p:commandButton icon="ui-icon-check" value="Registrar"  update="pqDatos , pqcuenta , mensaje" ajax="false" actionListener="#{usuarioController.registrar()}"/>
+    
+                    </p:fieldset>                    
+                    
+                    
+                    
+        </h:form>
+   </ui:define>
+
+
+
+    </ui:composition>
+</html>

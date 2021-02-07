@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="plantilla/general.xhtml">
+        <!--template="./plantillas/plantilla.xhtml">-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ui:define name="titulo">
+            Enviar Correo
+        </ui:define>
+
+        <ui:define name="cabecera">
+            <br/>
+            <h1 style="text-align: center;">Enviar Correo</h1>
+        </ui:define>
+
+        <ui:define name="contenido">
+	<h:form prependId="false">
+		<table border="1" cellpadding="2" cellspacing="2">
+			<tr>
+				<th>Option</th>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Sub Total</th>
+			</tr>
+			<ui:repeat var="item" value="#{cartManagedBean.items}">
+				<tr>
+					<td align="center">
+						<h:commandLink value="X" action="#{cartManagedBean.delete(item.product)}"></h:commandLink>
+					</td>
+					<td>#{item.product.id}</td>
+					<td>#{item.product.name}</td>
+					<td>#{item.product.price}</td>
+					<td>#{item.quantity}</td>
+					<td>#{item.product.price * item.quantity}</td>
+				</tr>
+			</ui:repeat>
+			<tr>
+				<td colspan="5" align="right">Total</td>
+				<td>#{cartManagedBean.total()}</td>
+			</tr>
+		</table>
+		<br></br>
+		<h:commandLink value="Continue Shopping" action="#{productManagedBean.index()}"></h:commandLink>
+	</h:form>
+
+   
+
+ </ui:define>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ui:composition>
+</html>

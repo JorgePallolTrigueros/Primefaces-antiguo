@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Pallol</title>
+    </h:head>
+    <h:body>
+        <br/>
+Autores
+
+
+        <table class="table" border = "1">
+            <tr>
+                <ui:repeat value="#{novelaBean.displayRecords()}" var="entry" varStatus="status">
+                    <td>
+                        <br/>
+                        <center>#{status.index + 1}</center>
+                        <br/><br/>
+                        <h:outputText value="#{entry.novelaId}" />
+                        <br/><br/>
+                        <h:outputText value="#{entry.nombre}" />
+                        <br/>
+                        <h:outputText value="#{entry.descripcionp}" />
+                        <br/>
+                        <br/>
+                        <h:form>
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>
+
+
+                        </h:form>
+                        <br/>
+                    </td>
+
+                    <!--                    Esto truquea a JSF para hacer la condicion de cerrar la fila de la  </tr><tr>-->
+                    <h:outputText value="&lt;/tr&gt;&lt;tr&gt;" escape="false" rendered="#{(status.index + 1 ) mod 3 eq 0}"/>
+                </ui:repeat>
+            </tr>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2>
+            <h:panelGroup id="comentarios">
+                <ui:repeat  value="#{novelaBean.comentarioList}" var="entry" varStatus="status">
+                    <h:outputText value = "#{entry.texto}"/>
+                </ui:repeat>
+            </h:panelGroup>
+        </h2>
+
+        <!--                    <ui:fragment rendered="{(status.index + 1) mod 3 eq 0 }">
+                                </tr>    
+                                <tr>
+                            </ui:fragment>-->
+        <!--        <h:dataTable value="{novelaBean.displayRecords()}" var="novela" border="2" cellspacing="1" cellpadding="1">
+            <h:column>
+                <c:facet name="header">Name</c:facet>
+                {novela.nombre}
+        </h:column>
+        
+        </h:dataTable>-->
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </h:body>
+</html>

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="plantilla/general.xhtml">
+        <!--template="./plantillas/plantilla.xhtml">-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ui:define name="contenido">
+       
+        
+     <div class="container">
+  <div class="row">
+    <div class="col-1">
+      
+    </div>
+     <div class="col-8">
+                          <h:form>
+                        <p:messages id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true"  showDetail="true"/>
+                        <p:fieldset legend="Correo" id="pqcuenta"> 
+                            <h:panelGrid columns="2"> 
+                                <p:outputLabel  for="txtusuario" value="Tu nombre" />
+                                <p:inputText id="txtusuario" required="true" requiredMessage="Campo requerido" />   
+                                <p:outputLabel  for="txtweb" value="Tu Web" />
+                                <p:inputText id="txtweb"  required="true" requiredMessage="Campo requerido" />   
+                                <p:outputLabel  for="txtmensaje" value="Tu Mensaje" />
+                                <p:inputTextarea  id="txtmensaje"   rows="10" cols="50" queryDelay="750" minQueryLength="4" />
+                                <p:commandButton icon="ui-icon-check" value="Registrar"  update="pqDatos , pqcuenta , mensaje" ajax="false" />
+                            </h:panelGrid>   
+                        </p:fieldset>                    
+                    </h:form>
+    </div>
+    <div class="col-2">
+
+    </div>
+  </div>
+</div>
+
+
+
+             
+        </ui:define>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ui:composition>
+</html>

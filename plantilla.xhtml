@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"        
+      xmlns:p="http://primefaces.org/ui">
+ 
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+</head>
+    <body>
+	
+        
+                <nav>
+            <div class="nav-wrapper">
+                <img src="logo.png"/>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                   <li><h:outputLink value = "WEB INF\primeface_cuadriculap.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == true}">Primefaces</h:outputLink></li>
+                    <li><h:outputLink value = "WEB INF\correo.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Enviar Coorreo   </h:outputLink></li>
+                    <li><h:outputLink value = "WEB INF\fija1.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Quienes Somos</h:outputLink></li>
+                    <li> <h:outputLink value = "WEB INF\fija2.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Bienvenidos </h:outputLink></li>
+                    <li><h:outputLink value = "WEB INF\listausuarios.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuestros Usuarios </h:outputLink></li>
+                    <li><h:outputLink value = "WEB INF\ejemplo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == true}">Jsf Puro</h:outputLink></li>        
+                    <!--    Parte No  Protegida      -->
+                    <li><h:outputLink value = "correo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Enviar Coorreo   </h:outputLink></li>
+                    <li><h:outputLink value = "fija1.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Quienes Somos </h:outputLink></li>
+                    <li> <h:outputLink value = "fija2.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Parte fija 2 </h:outputLink></li>
+                    <li><h:outputLink value = "registro.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Registrop de Usuario </h:outputLink></li>                  
+                    <li><h:outputLink value = "ejemplo.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Jsf Puro</h:outputLink></li>                   
+                    <li><h:outputLink value = "materialice_cuadricula.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Materialice</h:outputLink></li>
+                    <li><h:outputLink value = "login.xhtml"  rendered="#{usuarioBean.usuarioRegistrado == false}">Login </h:outputLink></li>
+                       <!--    Parte Nueva Sin Proteger     -->        
+                    <li><h:outputLink value = "recordar_contrasena.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == false}">Recordar Contraseña </h:outputLink></li>
+                    <li><h:outputLink value = "productos.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == false}">Nuestros Productos </h:outputLink></li>
+                    <li><h:outputLink value = "rankinsp.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == false}">Nuetro Rankimg </h:outputLink></li>       
+                    <li><h:outputLink value = "listausuariosp.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == false}">Nuestros Usuarios </h:outputLink></li>
+                        <!--    Parte Nueva y Protegda     -->                       
+                    <li><h:outputLink value = "login.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Logaut </h:outputLink></li>
+                    <li><h:outputLink value = "WEB INF\productos.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuestros Productos </h:outputLink></li>
+                    <li><h:outputLink value = "WEB INF\rankin.xhtml"   rendered="#{usuarioBean.usuarioRegistrado == true}">Nuetro Rankimg </h:outputLink></li>    
+                </ul>
+            </div>
+        </nav>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+	<ui:insert name="contenido">
+		Contenido por defecto para que no quede en blanco...    
+	</ui:insert>
+	
+</body>
+</html>

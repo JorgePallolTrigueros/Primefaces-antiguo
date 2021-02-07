@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-jul-2019 9:04:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pallol.novela.entities.CompraRealizada" table="compra_realizada" catalog="noveladb" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="com.pallol.novela.entities.Usuario" fetch="select">
+            <column name="idusuario" />
+        </many-to-one>
+        <property name="total" type="java.lang.Integer">
+            <column name="total" />
+        </property>
+        <property name="listaProductos" type="java.lang.Integer">
+            <column name="lista_productos" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="carrito" type="string">
+            <column name="carrito" length="45" />
+        </property>
+        <property name="dias" type="date">
+            <column name="dias" length="10" />
+        </property>
+        <set name="productoCompras" table="producto_compra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcompra" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.ProductoCompra" />
+        </set>
+    </class>
+</hibernate-mapping>

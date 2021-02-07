@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        Datos de la novela: 
+        <br/>
+            #{entry.nombre}
+            <br/>
+            #{entry.descripcion}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Personajes 1 a many cuadricula 
+        <br/>
+        <ui:repeat value="#{novelaBean.lstPersonajeNovela}" var="entry" varStatus="status">
+            #{entry.nombre}
+            <br/>
+            #{entry.descripcion}
+        </ui:repeat>
+                                <h:form>
+                            Inserrtar Personaje
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>
+                            
+                            
+                             Inserrtar Galeria
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>  
+                              
+                             
+                             Inserrtar Capitulo
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>                            
+                             
+                            
+                             
+                             Editar Novela
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>                               
+                             
+                            
+                        </h:form>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           <table class="table" border = "1">
+            <tr>
+                <ui:repeat value="#{novelaBean.lstPersonajeNovela}" var="entry" varStatus="status">
+                    <td>
+                        <br/>
+                        #{entry.nombre}
+                        <br/>
+                        #{entry.descripcion}                   
+                        <h:form>
+                            Eliminar Personaje
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>
+                            Editar Personaje
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>    
+                        </h:form>
+                        <br/>
+                    </td>
+                    <h:outputText value="&lt;/tr&gt;&lt;tr&gt;" escape="false" rendered="#{(status.index + 1 ) mod 3 eq 0}"/>
+                </ui:repeat>
+            </tr>
+        </table>
+
+        <br/>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        galeria 1 a many cuadricula 
+        <br/>
+        
+                 <table class="table" border = "1">
+            <tr>
+                <ui:repeat value="#{novelaBean.lstGaleriaNovela}" var="entry" varStatus="status">
+                    <td>
+                        <br/>
+                        #{entry.nombre}
+                        <br/>
+                        #{entry.descripcion}                   
+                        <h:form>
+                            Eliminar Galefia
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>
+                            Editar Personaje
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>    
+                        </h:form>
+                        <br/>
+                    </td>
+                    <h:outputText value="&lt;/tr&gt;&lt;tr&gt;" escape="false" rendered="#{(status.index + 1 ) mod 3 eq 0}"/>
+                </ui:repeat>
+            </tr>
+        </table>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        capitulo en fila 1 to many
+        <br/>
+        
+        
+        
+        
+        
+      <table class="table" border = "1">
+            <tr>
+                <ui:repeat value="#{novelaBean.lstCapituloNovela}" var="entry" varStatus="status">
+                    <td>
+                        <br/>
+                        #{entry.nombre}
+                        <br/>
+                        #{entry.descripcion}                   
+                        <h:form>
+                            Eliminar Personaje
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>
+                            Editar Personaje
+                            <h:commandButton id ="btnComentarios" value = "Ver Comentarios" action="#{novelaBean.muestraDetallesNovela(entry.novelaId)}">
+                                    <f:ajax execute = "btnComentarios" render = "comentarios" />
+                            </h:commandButton>    
+                        </h:form>
+                        <br/>
+                    </td>
+                    <h:outputText value="&lt;/tr&gt;&lt;tr&gt;" escape="false" rendered="#{(status.index + 1 ) mod 3 eq 0}"/>
+                </ui:repeat>
+            </tr>
+        </table>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Comentarios: 
+        <br/>
+        #{novelaBean.comentarioList}
+    </body>
+</html>

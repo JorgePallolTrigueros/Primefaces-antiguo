@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-jul-2019 9:04:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pallol.novela.entities.Usuario" table="usuario" catalog="noveladb" optimistic-lock="version">
+        <id name="usuarioId" type="int">
+            <column name="usuario_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="rol" class="com.pallol.novela.entities.Rol" fetch="select">
+            <column name="rol_id_fk" not-null="true" />
+        </many-to-one>
+        <property name="codigo" type="string">
+            <column name="codigo" length="75" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" length="45" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="estado" not-null="true" />
+        </property>
+        <set name="personas" table="persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.Persona" />
+        </set>
+        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.Comentario" />
+        </set>
+        <set name="usuarioNovelas" table="usuario_novela" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario_id_fk" not-null="true" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.UsuarioNovela" />
+        </set>
+        <set name="compraRealizadas" table="compra_realizada" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idusuario" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.CompraRealizada" />
+        </set>
+    </class>
+</hibernate-mapping>

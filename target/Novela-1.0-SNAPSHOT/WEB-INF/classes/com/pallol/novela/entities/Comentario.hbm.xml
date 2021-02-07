@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-jul-2019 9:04:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pallol.novela.entities.Comentario" table="comentario" catalog="noveladb" optimistic-lock="version">
+        <id name="comentarioId" type="java.lang.Integer">
+            <column name="comentario_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="novela" class="com.pallol.novela.entities.Novela" fetch="select">
+            <column name="novela_id_fk" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="com.pallol.novela.entities.Usuario" fetch="select">
+            <column name="usuario_id_fk" not-null="true" />
+        </many-to-one>
+        <property name="texto" type="string">
+            <column name="texto" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

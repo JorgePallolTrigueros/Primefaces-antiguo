@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                    template="plantilla/general.xhtml">
+        <!--template="./plantillas/plantilla.xhtml">-->
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <ui:define name="titulo">
+           
+        </ui:define>
+
+        <ui:define name="cabecera">
+    
+        
+        </ui:define>
+
+        <ui:define name="contenido">
+            
+            
+            
+        
+     <div class="container">
+  <div class="row">
+    <div class="col-1">
+      
+    </div>
+     <div class="col-8">
+                        
+                          
+                    <div class="card-columns">
+                        <ui:repeat value="#{novelaBean.muestraNovela()}" var="entry" varStatus="status"> 
+  <div class="card">
+
+        <div class="card-body"> 
+                      
+                            #{status.index + 1}
+                            <h:outputText value="#{entry.nombre}" />        
+                            <h:outputText value="#{entry.descripcionp}" />
+                   
+          </div>  </div>
+                        </ui:repeat> 
+                    
+                     </div>                
+                        
+                        
+           
+          </div>
+    <div class="col-2">
+
+    </div>
+  </div>
+</div>                  
+
+
+        
+        
+        
+     </ui:define>
+
+
+
+
+    </ui:composition>
+</html>

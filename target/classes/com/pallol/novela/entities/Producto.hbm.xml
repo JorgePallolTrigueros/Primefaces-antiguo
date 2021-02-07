@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-jul-2019 9:04:34 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pallol.novela.entities.Producto" table="producto" catalog="noveladb" optimistic-lock="version">
+        <id name="idproducto" type="int">
+            <column name="idproducto" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" />
+        </property>
+        <property name="precio" type="int">
+            <column name="precio" not-null="true" />
+        </property>
+        <property name="descripcionPequena" type="string">
+            <column name="descripcion_pequena" length="45" />
+        </property>
+        <property name="descripcionGrande" type="string">
+            <column name="descripcion_grande" length="45" />
+        </property>
+        <property name="existencias" type="int">
+            <column name="Existencias" not-null="true" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="65535" />
+        </property>
+        <set name="productoCompras" table="producto_compra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idproducto" />
+            </key>
+            <one-to-many class="com.pallol.novela.entities.ProductoCompra" />
+        </set>
+    </class>
+</hibernate-mapping>
